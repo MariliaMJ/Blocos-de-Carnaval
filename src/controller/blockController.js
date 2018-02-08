@@ -5,12 +5,17 @@ const blockRepository = require('../repository/blockRepository');
 const app = express();
 
 const getBlockBydate = () => {
-  app.get('/blocks/:date',  (req, res) => {
-    const date = req.params.date.value;
-    
+  return new Promise((resolve, reject) => {
     blockRepository.getBlocksBydate(date)
-      .then((blocks) => {
-
-      })
-  });  
+    .then((blocks) => {
+      if(blocks.length > 0){
+        resolve(blocks);
+      } else {
+        resolve({});
+      }
+    })
+    .catch((err) => {
+      reject(err);
+    })
+  })  
 };

@@ -10,7 +10,7 @@ const getBlocks = () => {
     axios.get(blocosderua)
       .then((response) => {
         if(response !== undefined){
-          resolve(response);
+          resolve(JSON.parse(response));
         } else {
           resolve({
             message:"Response not retrieved"
@@ -24,12 +24,11 @@ const getBlocks = () => {
 }
 
 const getBlockByDate = (date) => {
-  // getBlocks().then((blocks) => {
-  //   if(blocks.length > 0){
+  getBlocks().then((blocks) => {
+    if(blocks.length > 0){
 
-  //   }
-  // })
-  return console.log('block by date');
+    }
+  })
 }
 
 const filterByKey = ((key) => {
