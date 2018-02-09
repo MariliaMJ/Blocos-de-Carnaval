@@ -4,9 +4,9 @@ const express = require('express');
 const blockRepository = require('../repository/blockRepository');
 const app = express();
 
-const getBlockBydate = () => {
+const getBlockByDate = () => {
   return new Promise((resolve, reject) => {
-    blockRepository.getBlocksBydate(day)
+    blockRepository.getBlocksByDate(day)
     .then((blocks) => {
       if(blocks.length > 0){
         resolve(blocks);
@@ -19,3 +19,5 @@ const getBlockBydate = () => {
     })
   })  
 };
+
+module.exports = getBlockByDate;
