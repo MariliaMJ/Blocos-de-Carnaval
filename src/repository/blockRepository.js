@@ -23,17 +23,20 @@ const getBlocks = () => {
   })
 }
 
-const getBlockByDate = (date) => {
+const getBlockByDate = (day) => {
   getBlocks().then((blocks) => {
     if(blocks.length > 0){
-
+      let addressOnly = blocks.map(elem => elem.acf);
+      let blockBydate = addressOnly.filter(block => block.date === day);
+      resolve(blockBydate);
+    } else {
+      resolve({message: "no blocks"});
     }
   })
+  .catch((err) => {
+    reject(err);
+  })
 }
-
-const filterByKey = ((key) => {
-
-})
 
 module.exports = {
   getBlockByDate,

@@ -6,12 +6,12 @@ const app = express();
 
 const getBlockBydate = () => {
   return new Promise((resolve, reject) => {
-    blockRepository.getBlocksBydate(date)
+    blockRepository.getBlocksBydate(day)
     .then((blocks) => {
       if(blocks.length > 0){
         resolve(blocks);
       } else {
-        resolve({});
+        resolve({message: "no blocks available"});
       }
     })
     .catch((err) => {

@@ -7,8 +7,8 @@ const blockRouter = express.Router();
 
 blockRouter.get('/', (req, res) => res.json({message: 'Blocos de Carnaval!'}));
 blockRouter.get('/blocks/:date', (req, res) => {
-  let date = req.params.date.value;
-  block.getBlockBydate(date)
+  let day = req.params.date.value;
+  block.getBlockBydate(day)
     .then((result) => {
       res.send(200).json(result);
     })
